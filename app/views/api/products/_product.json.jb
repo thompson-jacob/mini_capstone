@@ -7,4 +7,5 @@
   discount?: product.is_discounted?,
   tax: product.tax,
   total: product.total,
+  inventory: product.inventory,
 }

@@ -1,6 +1,22 @@
 class Api::ProductsController < ApplicationController
   def index
     @products = Product.all
+    if params["search"]
+      @products = @products.where("name ILIKE ?", "%#{params["search"]}%")
+    end
+
+    if params[:discount] == "true"
+      @products = @products.where("price < ?", 10)
+    end
+
+    if params[:sort] == "price" && params[sort_order] == "asc"
+      @products = @products.order(price: :asc)
+    elsif params[:sort] == "price" && params[sort_order] == "desc"
+      @products = @products.order(price: :desc)
+    else
+      @products = @products.order(price: :asc)
+    end
+
     render "index.json.jb"
   end
 
@@ -20,8 +36,9 @@ class Api::ProductsController < ApplicationController
     @product.save
     if @product.save
       render "show.json.jb"
-    else 
-      render json: {errors: @product.errors.full_messages}, status: 422
+    else
+      render json: { errors: @product.errors.full_messages }, status: 422
+    end
   end
 
   def update
@@ -35,8 +52,8 @@ class Api::ProductsController < ApplicationController
 
     if @product.save
       render "show.json.jb"
-    else 
-      render json: {errors: @product.errors.full_messages}, status: 400
+    else
+      render json: { errors: @product.errors.full_messages }, status: 400
     end
   end
 
