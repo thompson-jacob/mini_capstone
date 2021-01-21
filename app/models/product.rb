@@ -8,6 +8,10 @@ class Product < ApplicationRecord
   validates :price, numericality: { greater_than: 0 }
   validates :description, presence: true
   validates :description, length: { in: 2..500 }
+  validates :supplier, presence: true
+
+  scope :title_search, ->(search_terms) { where("name ILIKE ?", "%#{search_terms}%") }
+  # scope :discounted, ->(check_discount) {if check_discount where("price < ?", 10)}
 
   def is_discounted?
     if price < 10
