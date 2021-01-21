@@ -1,27 +1,9 @@
 class Api::SuppliersController < ApplicationController
   def index
     @suppliers = Supplier.all
-    # .title_search(params[:search])
-    # .discounted(params[:discount])
-
-    .sorted(params[:sort], params[:sort_order])
-
     if params["search"]
       @suppliers = @suppliers.where("name ILIKE ?", "%#{params["search"]}%")
     end
-
-    if params[:discount] == "true"
-      @suppliers = @suppliers.where("price < ?", 10)
-    end
-
-    if params[:sort] == "price" && params[sort_order] == "asc"
-      @suppliers = @suppliers.order(price: :asc)
-    elsif params[:sort] == "price" && params[sort_order] == "desc"
-      @suppliers = @suppliers.order(price: :desc)
-    else
-      @suppliers = @suppliers.order(price: :asc)
-    end
-
     render "index.json.jb"
   end
 
