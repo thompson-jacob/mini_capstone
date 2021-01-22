@@ -10,6 +10,13 @@ class Product < ApplicationRecord
   validates :description, length: { in: 2..500 }
   validates :supplier, presence: true
 
+  belongs_to :supplier
+  has_many :images
+  # def supplier
+  #   #look in the supplier's table for a supplier with an id that matches
+  #   Supplier.find_by(id: supplier_id)
+  # end
+
   scope :title_search, ->(search_terms) { where("name ILIKE ?", "%#{search_terms}%") }
   # scope :discounted, ->(check_discount) {if check_discount where("price < ?", 10)}
 
