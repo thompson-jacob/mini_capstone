@@ -15,9 +15,8 @@ class Api::SuppliersController < ApplicationController
   def create
     @supplier = Supplier.new(
       name: params["name"],
-      price: params["price"],
-      image_url: params["image_url"],
-      description: params["description"],
+      email: params["email"],
+      phone: params["phone"],
     )
 
     @supplier.save
@@ -30,11 +29,9 @@ class Api::SuppliersController < ApplicationController
 
   def update
     @supplier = Supplier.find_by(id: params["id"])
-    @supplier.id = params["id"] || @supplier.id
     @supplier.name = params["name"] || @supplier.name
-    @supplier.price = params["price"] || @supplier.price
-    @supplier.image_url = params["image_url"] || @supplier.image_url
-    @supplier.description = params["description"] || @supplier.description
+    @supplier.email = params["email"] || @supplier.email
+    @supplier.phone = params["phone"] || @supplier.phone
     @supplier.save
 
     if @supplier.save

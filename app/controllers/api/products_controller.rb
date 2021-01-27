@@ -1,5 +1,8 @@
 class Api::ProductsController < ApplicationController
+  before_action :authenticate_admin, except [:index, :show]
+
   def index
+    # if current_user
     @products = Product
       .title_search(params[:search])
     # .discounted(params[:discount])
@@ -23,6 +26,9 @@ class Api::ProductsController < ApplicationController
     # end
 
     render "index.json.jb"
+    # else
+    #   render json: { message: "No user logged in" }
+    # end
   end
 
   def show
@@ -32,13 +38,15 @@ class Api::ProductsController < ApplicationController
 
   def create
     @product = Product.new(
-      name: params["name"],
-      price: params["price"],
-      # images: params["image_url"],
-      description: params["description"],
+      name: params[:name],
+      price: params[:price],
+      supplier_id: params[:supplier_id],
+      description: params[:description],
     )
 
     @product.save
+    ### FIX THIS
+    # Images.create(product_id: @product.id, url: params[:image_url])
     if @product.save
       render "show.json.jb"
     else
@@ -48,10 +56,9 @@ class Api::ProductsController < ApplicationController
 
   def update
     @product = Product.find_by(id: params["id"])
-    @product.id = params["id"] || @product.id
     @product.name = params["name"] || @product.name
     @product.price = params["price"] || @product.price
-    # @product.images = params["images"] || @product.image_url
+    @product.supplier_id = params["supplier_id"] || @product.supplier_id
     @product.description = params["description"] || @product.description
     @product.save
 

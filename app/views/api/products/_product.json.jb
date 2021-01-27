@@ -9,4 +9,5 @@
   total: product.total,
   inventory: product.inventory,
   supplier: product.supplier,
+ user_info: current_user,
 }

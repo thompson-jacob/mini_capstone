@@ -1,0 +1,6 @@
+Create a shopping cart that tracks orders in the store
+
+Link database to "shopping cart"
+Each product is linked to inventory and user
+a user that is signed in can add to their cart,(reserving the item temporarily from inventory?)
+the user signs a JS form to validate their purchase using Stripe of simliar API 

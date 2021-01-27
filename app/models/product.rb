@@ -12,6 +12,7 @@ class Product < ApplicationRecord
 
   belongs_to :supplier
   has_many :images
+  has_many :orders
   # def supplier
   #   #look in the supplier's table for a supplier with an id that matches
   #   Supplier.find_by(id: supplier_id)
