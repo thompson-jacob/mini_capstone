@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_admin
-    unless current_user.admin == true
+    unless current_user && current_user.admin
       render json: { message: "User is not authorized to view this content" }, status: :unauthorized
     end
   end

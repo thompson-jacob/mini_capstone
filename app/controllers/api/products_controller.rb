@@ -1,12 +1,11 @@
 class Api::ProductsController < ApplicationController
-  before_action :authenticate_admin, except [:index, :show]
+  before_action :authenticate_admin, except: [:index, :show]
 
   def index
     # if current_user
     @products = Product
       .title_search(params[:search])
-    # .discounted(params[:discount])
-
+    #  .discounted(params[:discount])
     # .sorted(params[:sort], params[:sort_order])
 
     # if params["search"]

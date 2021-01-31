@@ -1,10 +1,10 @@
 {
-  id: current_user.id,
-  user: @order.user_id,
-  product: @order.product,
-  quantity: @order.quantity,
-  sub_total: @order.subtotal,
-  tax: @tax,
-  total: @total,
-
+  id: order.id,
+  user: order.user_id,
+  sub_total: order.subtotal,
+  tax: order.tax,
+  total: order.total,
+  carted_products: order.carted_products.map do |carted_product|
+    render partial: "/api/carted_products/carted_product.json.jb", locals: { carted_product: carted_product }
+  end,
 }
