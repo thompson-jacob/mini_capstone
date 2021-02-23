@@ -1,0 +1,22 @@
+{
+  "name": "mini_capstone",
+  "version": "1.0.0",
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thompson-jacob/mini_capstone.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thompson-jacob/mini_capstone/issues"
+  },
+  "homepage": "https://github.com/thompson-jacob/mini_capstone#readme"
+}

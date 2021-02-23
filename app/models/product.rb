@@ -39,4 +39,8 @@ class Product < ApplicationRecord
   def total
     price + tax
   end
+
+  def main_image_url
+    images.length > 0 ? images[0].url : "https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg"
+  end
 end

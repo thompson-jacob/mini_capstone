@@ -9,5 +9,6 @@
   total: product.total,
   inventory: product.inventory,
   supplier: product.supplier,
- user_info: current_user,
+  user_info: current_user,
+  main_image_url: product.main_image_url,
 }
