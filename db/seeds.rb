@@ -24,11 +24,6 @@ Product.create!({ name: "Star projector", price: 25.99, description: "Star proje
 Product.create!({ name: "Mens Bohemian", price: 150.00, description: "Mens bohemian robe, 100% silk, great for festivals, lounging, eye catching, soft", supplier_id: 1 })
 Product.create!({ name: "Tye-dye Tapestry", price: 46.00, description: "Psychadelic tapestry, lots of variety, great for apartments, houses, festivals", supplier_id: 1 })
 
-#ORDERS
-Order.create!(user_id: 1, product_id: 1, quantity: 4)
-Order.create!(user_id: 2, product_id: 2, quantity: 3)
-Order.create!(user_id: 3, product_id: 3, quantity: 2)
-Order.create!(user_id: 4, product_id: 2, quantity: 1)
 
 #IMAGES
 Image.create!(url: "https://i.pinimg.com/originals/b3/97/ce/b397ce7a0619f31ba362335694b833f2.png", product_id: 1)
