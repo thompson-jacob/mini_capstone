@@ -35,7 +35,9 @@ Rails.application.routes.draw do
     get "/carted_products" => "carted_products#index"
     delete "/carted_products" => "carted_products#destroy"
 
-    #HEROKU PATH THROUGH VUE.JS
   end
-  get "/*path" => proc { [200, {}, [ActionView::Base.new.render(file: 'public/index.html')]] }
+  
+  #HEROKU PATH THROUGH VUE.JS
+  # get "/*path" => proc { [200, {}, [ActionView::Base.new.render(file: 'public/index.html')]] }
+
 end
