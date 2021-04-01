@@ -2,9 +2,9 @@ class Api::ProductsController < ApplicationController
   before_action :authenticate_admin, except: [:index, :show]
 
   def index
-    # if current_user
-    @products = Product
-      .title_search(params[:search])
+    if current_user
+    @products = current_user
+      # .title_search(params[:search])
     #  .discounted(params[:discount])
     # .sorted(params[:sort], params[:sort_order])
 
@@ -24,10 +24,10 @@ class Api::ProductsController < ApplicationController
     #   @products = @products.order(price: :asc)
     # end
 
-    render "index.json.jb"
-    # else
-    #   render json: { message: "No user logged in" }
-    # end
+    render json: {message: @products}
+     else
+      render json: { message: "No user logged in" }
+    end
   end
 
   def show

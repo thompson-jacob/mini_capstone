@@ -23,7 +23,7 @@ RSpec.describe "Products", type: :request do
 
   # RSpec.describe "Get /Products/:id", type: :request do
   describe "GET/products/:id" do
-    it "checks to see if the status code works for now" do
+    it "checks the status code for 200, checks for [\"name\"] equivalency" do
 
       user = User.create!(name: "jacob", email: "jacob@email.com", password: "password")
 
@@ -34,6 +34,8 @@ RSpec.describe "Products", type: :request do
       get "http://localhost:3000/api/products/#{product.id}"
       product = JSON.parse(response.body)
       expect(response).to have_http_status(200)
+      expect(product["name"]).to eq("Glowing Moon Lamp")
+      expect(product["name"].size).to eq(17)
         
     end
   end
